@@ -1,4 +1,4 @@
-package net.teamfruit.ytchat.gui;
+package net.teamfruit.ytchat;
 
 import com.google.api.services.youtube.model.LiveChatMessageAuthorDetails;
 import com.google.api.services.youtube.model.LiveChatSuperChatDetails;
@@ -7,12 +7,11 @@ import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
 import net.minecraft.util.text.TranslationTextComponent;
-import net.teamfruit.ytchat.YouTubeChat;
-import net.teamfruit.ytchat.YouTubeConfiguration;
 import net.teamfruit.ytchat.api.YouTubeChatMessageListener;
+import net.teamfruit.ytchat.gui.config.GuiOptions;
 import net.teamfruit.ytchat.gui.config.OptionsEntryButton;
 import net.teamfruit.ytchat.gui.config.OptionsListWidget;
-import net.teamfruit.ytchat.gui.config.value.OptionsEntryValueInput;
+import net.teamfruit.ytchat.gui.config.OptionsEntryValueInput;
 import net.teamfruit.ytchat.service.Auth;
 import net.teamfruit.ytchat.service.ChatService;
 
@@ -21,7 +20,7 @@ import java.io.IOException;
 import static net.teamfruit.ytchat.MessageUtils.showErrorMessage;
 import static net.teamfruit.ytchat.MessageUtils.showMessage;
 
-public class GuiConfigYouTubeChat extends GuiOptions {
+public class YouTubeConfigurationGui extends GuiOptions {
     private final ChatService service;
     private static YouTubeChatMessageListener listener = (author, superChatDetails, message) -> {
         showMessage(message);
@@ -35,7 +34,7 @@ public class GuiConfigYouTubeChat extends GuiOptions {
         }
     };
 
-    public GuiConfigYouTubeChat(Screen parent) {
+    public YouTubeConfigurationGui(Screen parent) {
         super(parent, new TranslationTextComponent(Util.makeTranslationKey("gui", new ResourceLocation(YouTubeChat.MODID, "configuration")), YouTubeChat.APPNAME), YouTubeConfiguration.spec::save, null);
         this.service = YouTubeChat.getServiceInternal();
     }
@@ -44,7 +43,7 @@ public class GuiConfigYouTubeChat extends GuiOptions {
     public OptionsListWidget getOptions() {
         OptionsListWidget options = new OptionsListWidget(this, minecraft, width + 45, height, 32, height - 32, 30, YouTubeConfiguration.spec::save);
         options.add(new OptionsEntryButton(Util.makeTranslationKey("config", new ResourceLocation(YouTubeChat.MODID, "secret")), new Button(0, 0, 100, 20, "", w -> {
-            minecraft.displayGuiScreen(new GuiOptions(GuiConfigYouTubeChat.this, new TranslationTextComponent(Util.makeTranslationKey("config", new ResourceLocation(YouTubeChat.MODID, "secret")))) {
+            minecraft.displayGuiScreen(new GuiOptions(YouTubeConfigurationGui.this, new TranslationTextComponent(Util.makeTranslationKey("config", new ResourceLocation(YouTubeChat.MODID, "secret")))) {
                 @Override
                 public OptionsListWidget getOptions() {
                     OptionsListWidget options = new OptionsListWidget(this, minecraft, width + 45, height, 32, height - 32, 30);
@@ -65,7 +64,7 @@ public class GuiConfigYouTubeChat extends GuiOptions {
             });
         })));
         options.add(new OptionsEntryButton(Util.makeTranslationKey("gui", new ResourceLocation(YouTubeChat.MODID, "mock")), new Button(0, 0, 100, 20, "", w -> {
-            minecraft.displayGuiScreen(new GuiOptions(GuiConfigYouTubeChat.this, new TranslationTextComponent(Util.makeTranslationKey("gui", new ResourceLocation(YouTubeChat.MODID, "mock")))) {
+            minecraft.displayGuiScreen(new GuiOptions(YouTubeConfigurationGui.this, new TranslationTextComponent(Util.makeTranslationKey("gui", new ResourceLocation(YouTubeChat.MODID, "mock")))) {
                 String author = "author";
                 String message = "message";
 

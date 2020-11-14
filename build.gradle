@@ -118,6 +118,7 @@ dependencies {
 jar {
     manifest {
         attributes([
+                "Main-Class": "net.teamfruit.ytchat.Main",
                 "Specification-Title": "ytchat",
                 "Specification-Vendor": "Kamesuta",
                 "Specification-Version": "1", // We are version 1 of ourselves

@@ -1,7 +1,5 @@
 package net.teamfruit.ytchat.gui.config;
 
-import net.teamfruit.ytchat.gui.GuiOptions;
-import net.teamfruit.ytchat.gui.config.value.OptionsEntryValue;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;

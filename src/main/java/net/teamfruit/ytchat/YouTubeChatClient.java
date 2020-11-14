@@ -15,7 +15,6 @@ import net.minecraftforge.fml.ExtensionPoint;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
-import net.teamfruit.ytchat.gui.GuiConfigYouTubeChat;
 import org.lwjgl.glfw.GLFW;
 
 @Mod.EventBusSubscriber(modid = YouTubeChat.MODID, value = Dist.CLIENT)
@@ -24,7 +23,7 @@ public class YouTubeChatClient {
 
     public static void initClient() {
         ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.CONFIGGUIFACTORY,
-                () -> (mc, parent) -> new GuiConfigYouTubeChat(parent));
+                () -> (mc, parent) -> new YouTubeConfigurationGui(parent));
 
         openConfig = new KeyBinding(
                 Util.makeTranslationKey("key", new ResourceLocation(YouTubeChat.MODID, "config")),
@@ -42,7 +41,7 @@ public class YouTubeChatClient {
             return;
 
         while (openConfig.getKeyBinding().isPressed()) {
-            Minecraft.getInstance().displayGuiScreen(new GuiConfigYouTubeChat(null));
+            Minecraft.getInstance().displayGuiScreen(new YouTubeConfigurationGui(null));
         }
     }
 

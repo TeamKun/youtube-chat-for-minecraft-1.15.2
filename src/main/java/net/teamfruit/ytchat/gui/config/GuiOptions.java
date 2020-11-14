@@ -1,8 +1,6 @@
-package net.teamfruit.ytchat.gui;
+package net.teamfruit.ytchat.gui.config;
 
 import com.google.common.collect.Lists;
-import net.teamfruit.ytchat.gui.config.OptionsListWidget;
-import net.teamfruit.ytchat.gui.config.value.OptionsEntryValue;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.IGuiEventListener;
 import net.minecraft.client.gui.screen.Screen;

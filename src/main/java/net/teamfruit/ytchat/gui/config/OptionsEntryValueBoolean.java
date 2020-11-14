@@ -1,4 +1,4 @@
-package net.teamfruit.ytchat.gui.config.value;
+package net.teamfruit.ytchat.gui.config;
 
 import net.minecraft.client.gui.IGuiEventListener;
 import net.minecraft.client.gui.widget.button.Button;
