@@ -48,13 +48,13 @@ public class GuiConfigYouTubeChat extends GuiOptions {
                 @Override
                 public OptionsListWidget getOptions() {
                     OptionsListWidget options = new OptionsListWidget(this, minecraft, width + 45, height, 32, height - 32, 30);
-                    options.add(new OptionsEntryValueInput<String>(Util.makeTranslationKey(
+                    options.add(new OptionsEntryValueInput<>(Util.makeTranslationKey(
                             "config",
                             new ResourceLocation(YouTubeChat.MODID, "secret.client_secret")),
                             YouTubeConfiguration.SECRET.clientSecret.get(),
                             YouTubeConfiguration.SECRET.clientSecret::set
                     ));
-                    options.add(new OptionsEntryValueInput<String>(Util.makeTranslationKey(
+                    options.add(new OptionsEntryValueInput<>(Util.makeTranslationKey(
                             "config",
                             new ResourceLocation(YouTubeChat.MODID, "secret.video_id")),
                             YouTubeConfiguration.SECRET.videoId.get(),
@@ -72,13 +72,13 @@ public class GuiConfigYouTubeChat extends GuiOptions {
                 @Override
                 public OptionsListWidget getOptions() {
                     OptionsListWidget options = new OptionsListWidget(this, minecraft, width + 45, height, 32, height - 32, 30);
-                    options.add(new OptionsEntryValueInput<String>(Util.makeTranslationKey(
+                    options.add(new OptionsEntryValueInput<>(Util.makeTranslationKey(
                             "gui",
                             new ResourceLocation(YouTubeChat.MODID, "mock.author")),
                             author,
                             val -> author = val
                     ));
-                    options.add(new OptionsEntryValueInput<String>(Util.makeTranslationKey(
+                    options.add(new OptionsEntryValueInput<>(Util.makeTranslationKey(
                             "gui",
                             new ResourceLocation(YouTubeChat.MODID, "mock.message")),
                             message,

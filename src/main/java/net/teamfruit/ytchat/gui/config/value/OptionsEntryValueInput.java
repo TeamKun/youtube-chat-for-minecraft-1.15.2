@@ -20,6 +20,7 @@ public class OptionsEntryValueInput<T> extends OptionsEntryValue<T> {
 
         this.value = value;
         this.textField = new WatchedTextfield(this, client.fontRenderer, 0, 0, 98, 18);
+        textField.setMaxStringLength(1024);
         textField.setText(String.valueOf(value));
         textField.setValidator(validator);
     }
