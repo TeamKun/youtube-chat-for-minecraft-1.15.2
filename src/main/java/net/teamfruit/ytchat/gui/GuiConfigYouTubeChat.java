@@ -9,12 +9,12 @@ import net.minecraft.util.Util;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.teamfruit.ytchat.YouTubeChat;
 import net.teamfruit.ytchat.YouTubeConfiguration;
+import net.teamfruit.ytchat.api.YouTubeChatMessageListener;
 import net.teamfruit.ytchat.gui.config.OptionsEntryButton;
 import net.teamfruit.ytchat.gui.config.OptionsListWidget;
 import net.teamfruit.ytchat.gui.config.value.OptionsEntryValueInput;
 import net.teamfruit.ytchat.service.Auth;
 import net.teamfruit.ytchat.service.ChatService;
-import net.teamfruit.ytchat.service.YouTubeChatService;
 
 import java.io.IOException;
 
@@ -23,7 +23,7 @@ import static net.teamfruit.ytchat.MessageUtils.showMessage;
 
 public class GuiConfigYouTubeChat extends GuiOptions {
     private final ChatService service;
-    private static YouTubeChatService.YouTubeChatMessageListener listener = (author, superChatDetails, message) -> {
+    private static YouTubeChatMessageListener listener = (author, superChatDetails, message) -> {
         showMessage(message);
         if (superChatDetails != null
                 && superChatDetails.getAmountMicros() != null

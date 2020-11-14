@@ -22,6 +22,8 @@ import com.google.api.services.youtube.YouTubeScopes;
 import com.google.api.services.youtube.model.*;
 import net.minecraft.client.Minecraft;
 import net.teamfruit.ytchat.YouTubeChat;
+import net.teamfruit.ytchat.api.YouTubeChatMessageListener;
+import net.teamfruit.ytchat.api.YouTubeChatService;
 import org.apache.logging.log4j.Level;
 
 import java.util.ArrayList;
@@ -54,7 +56,7 @@ public class ChatService implements YouTubeChatService {
     private long nextPoll;
 
     public ChatService() {
-        listeners = new ArrayList<YouTubeChatMessageListener>();
+        listeners = new ArrayList<>();
     }
 
     public void start(

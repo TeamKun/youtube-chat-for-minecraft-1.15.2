@@ -6,7 +6,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.teamfruit.ytchat.service.ChatService;
-import net.teamfruit.ytchat.service.YouTubeChatService;
+import net.teamfruit.ytchat.api.YouTubeChatService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,10 +20,6 @@ public class YouTubeChat {
     public static final Logger logger = LogManager.getLogger(APPNAME);
 
     private static ChatService service = new ChatService();
-
-    public static YouTubeChatService getService() {
-        return service;
-    }
 
     public static ChatService getServiceInternal() {
         return service;

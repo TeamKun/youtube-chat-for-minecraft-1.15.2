@@ -14,10 +14,7 @@
  * limitations under the License.
  */
 
-package net.teamfruit.ytchat.service;
-
-import com.google.api.services.youtube.model.LiveChatMessageAuthorDetails;
-import com.google.api.services.youtube.model.LiveChatSuperChatDetails;
+package net.teamfruit.ytchat.api;
 
 import java.util.function.Consumer;
 
@@ -26,16 +23,6 @@ import java.util.function.Consumer;
  * messages.
  */
 public interface YouTubeChatService {
-
-    /**
-     * Notifies subscribers of chat message details when a message is received.
-     */
-    interface YouTubeChatMessageListener {
-        void onMessageReceived(
-                LiveChatMessageAuthorDetails author,
-                LiveChatSuperChatDetails superChatDetails,
-                String message);
-    }
 
     /** @return a boolean indicating if the service is initialized. */
     boolean isInitialized();
