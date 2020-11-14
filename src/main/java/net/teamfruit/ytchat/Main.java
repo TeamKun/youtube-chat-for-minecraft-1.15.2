@@ -34,7 +34,7 @@ public class Main {
 
         switch (args[0]) {
             case "login":
-                System.out.print("Paste the client ID JSON from the Google API console:");
+                YouTubeChat.logger.info("Paste the client ID JSON from the Google API console:");
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                 String clientSecret = br.readLine();
                 List<String> scopes = new ArrayList<String>();

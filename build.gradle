@@ -9,6 +9,10 @@ buildscript {
     }
 }
 
+plugins {
+    id 'com.github.johnrengelman.shadow' version '2.0.1'
+}
+
 apply plugin: 'net.minecraftforge.gradle'
 
 group = 'net.teamfruit.ytchat'
@@ -83,6 +87,12 @@ minecraft {
     }
 }
 
+// Configure Shade
+configurations {
+    shade
+    compile.extendsFrom shade
+}
+
 dependencies {
     // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
@@ -107,12 +117,30 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
-    compile group: 'com.google.guava', name: 'guava', version: '22.0'
-    compile group: 'com.google.apis', name: 'google-api-services-youtube', version: 'v3-rev183-1.22.0'
-    compile group: 'com.google.oauth-client', name: 'google-oauth-client-jetty', version: '1.22.0'
-    compile group: 'com.google.api-client', name: 'google-api-client', version: '1.22.0'
-    compile group: 'com.google.http-client', name: 'google-http-client', version: '1.22.0'
+    //shade group: 'com.google.guava', name: 'guava', version: '22.0'
+    shade group: 'com.google.apis', name: 'google-api-services-youtube', version: 'v3-rev183-1.22.0'
+    shade group: 'com.google.oauth-client', name: 'google-oauth-client-jetty', version: '1.22.0'
+    shade group: 'com.google.api-client', name: 'google-api-client', version: '1.22.0'
+    shade group: 'com.google.http-client', name: 'google-http-client', version: '1.22.0'
 }
+
+shadowJar.configurations = [project.configurations.shade]
+
+afterEvaluate {
+    reobf {
+        shadowJar { mappings = tasks.reobfJar.mappings }
+    }
+}
+
+// Configure Auto Relocation
+import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
+
+task relocateShadowJar(type: ConfigureShadowRelocation) {
+    target = tasks.shadowJar
+    prefix = "net.teamfruit.ytchat.lib" // Default value is "shadow"
+}
+
+tasks.shadowJar.dependsOn tasks.relocateShadowJar
 
 // Example for how to get properties into the manifest for reading by the runtime..
 jar {

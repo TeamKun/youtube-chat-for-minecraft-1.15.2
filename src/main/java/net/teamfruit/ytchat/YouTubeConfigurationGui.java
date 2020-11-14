@@ -21,7 +21,6 @@ import static net.teamfruit.ytchat.MessageUtils.showErrorMessage;
 import static net.teamfruit.ytchat.MessageUtils.showMessage;
 
 public class YouTubeConfigurationGui extends GuiOptions {
-    private final ChatService service;
     private static YouTubeChatMessageListener listener = (author, superChatDetails, message) -> {
         showMessage(message);
         if (superChatDetails != null
@@ -36,7 +35,6 @@ public class YouTubeConfigurationGui extends GuiOptions {
 
     public YouTubeConfigurationGui(Screen parent) {
         super(parent, new TranslationTextComponent(Util.makeTranslationKey("gui", new ResourceLocation(YouTubeChat.MODID, "configuration")), YouTubeChat.APPNAME), YouTubeConfiguration.spec::save, null);
-        this.service = YouTubeChat.getServiceInternal();
     }
 
     @Override
@@ -85,7 +83,7 @@ public class YouTubeConfigurationGui extends GuiOptions {
                     ));
                     options.add(new OptionsEntryButton(Util.makeTranslationKey("gui", new ResourceLocation(YouTubeChat.MODID, "mock.send")), new Button(0, 0, 100, 20, "", w -> {
                         // Message
-                        System.out.println(String.format("YouTubeChatMock received %1$s from %2$s", message, author));
+                        YouTubeChat.logger.info(String.format("YouTubeChatMock received %1$s from %2$s", message, author));
                         LiveChatMessageAuthorDetails authorDetails = new LiveChatMessageAuthorDetails();
                         authorDetails.setDisplayName(author);
                         authorDetails.setChannelId(author);
@@ -97,6 +95,7 @@ public class YouTubeConfigurationGui extends GuiOptions {
                 }
             });
         })));
+        ChatService service = YouTubeChat.getServiceInternal();
         options.add(new OptionsEntryButton(Util.makeTranslationKey("gui", new ResourceLocation(YouTubeChat.MODID, "control.start")), new Button(0, 0, 100, 20, "", w -> {
             // Start
             String clientSecret = YouTubeConfiguration.SECRET.clientSecret.get();

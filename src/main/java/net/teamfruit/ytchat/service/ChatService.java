@@ -92,7 +92,7 @@ public class ChatService implements YouTubeChatService {
                             for (Video v : response.getItems()) {
                                 liveChatId = v.getLiveStreamingDetails().getActiveLiveChatId();
                                 if (liveChatId != null && !liveChatId.isEmpty()) {
-                                    System.out.println("Live chat id: " + liveChatId);
+                                    YouTubeChat.logger.info("Live chat id: " + liveChatId);
                                     break;
                                 }
                             }
@@ -108,7 +108,7 @@ public class ChatService implements YouTubeChatService {
                             for (LiveBroadcast b : broadcastListResponse.getItems()) {
                                 liveChatId = b.getSnippet().getLiveChatId();
                                 if (liveChatId != null && !liveChatId.isEmpty()) {
-                                    System.out.println("Live chat id: " + liveChatId);
+                                    YouTubeChat.logger.info("Live chat id: " + liveChatId);
                                     break;
                                 }
                             }
@@ -248,7 +248,7 @@ public class ChatService implements YouTubeChatService {
                             }
 
                             // Get chat messages from YouTube
-                            System.out.println("Getting live chat messages");
+                            YouTubeChat.logger.trace("Getting live chat messages");
                             LiveChatMessageListResponse response = youtube
                                     .liveChatMessages()
                                     .list(liveChatId, "snippet, authorDetails")
@@ -270,7 +270,7 @@ public class ChatService implements YouTubeChatService {
                                                     snippet.getDisplayMessage());
                                         }
                                     });
-                            System.out.println("POLL DELAY: " + response.getPollingIntervalMillis());
+                            YouTubeChat.logger.trace("POLL DELAY: " + response.getPollingIntervalMillis());
                             poll(response.getPollingIntervalMillis());
                         } catch (Throwable t) {
                             showMessage(t.getMessage());
