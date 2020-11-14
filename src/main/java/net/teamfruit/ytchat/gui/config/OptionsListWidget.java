@@ -1,7 +1,7 @@
-package com.google.youtube.gaming.chat.gui.config;
+package net.teamfruit.ytchat.gui.config;
 
-import com.google.youtube.gaming.chat.gui.GuiOptions;
-import com.google.youtube.gaming.chat.gui.config.value.OptionsEntryValue;
+import net.teamfruit.ytchat.gui.GuiOptions;
+import net.teamfruit.ytchat.gui.config.value.OptionsEntryValue;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.math.MathHelper;
 
-import static com.google.youtube.gaming.chat.gui.config.OptionsListWidget.Entry;
+import static net.teamfruit.ytchat.gui.config.OptionsListWidget.Entry;
 
 public class OptionsListWidget extends AbstractList<Entry> {
 

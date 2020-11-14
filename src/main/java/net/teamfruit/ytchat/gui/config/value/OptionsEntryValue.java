@@ -1,6 +1,6 @@
-package com.google.youtube.gaming.chat.gui.config.value;
+package net.teamfruit.ytchat.gui.config.value;
 
-import com.google.youtube.gaming.chat.gui.config.OptionsListWidget;
+import net.teamfruit.ytchat.gui.config.OptionsListWidget;
 import net.minecraft.client.gui.IGuiEventListener;
 import net.minecraft.util.text.TextComponent;
 import net.minecraft.util.text.TranslationTextComponent;

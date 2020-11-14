@@ -1,8 +1,8 @@
-package com.google.youtube.gaming.chat.gui;
+package net.teamfruit.ytchat.gui;
 
 import com.google.common.collect.Lists;
-import com.google.youtube.gaming.chat.gui.config.OptionsListWidget;
-import com.google.youtube.gaming.chat.gui.config.value.OptionsEntryValue;
+import net.teamfruit.ytchat.gui.config.OptionsListWidget;
+import net.teamfruit.ytchat.gui.config.value.OptionsEntryValue;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.IGuiEventListener;
 import net.minecraft.client.gui.screen.Screen;
@@ -52,6 +52,8 @@ public abstract class GuiOptions extends Screen {
         } else {
             addButton(new Button(width / 2 - 50, height - 25, 100, 20, I18n.format("gui.done"), w -> {
                 options.save();
+                if (saver != null)
+                    saver.run();
                 onClose();
             }));
         }

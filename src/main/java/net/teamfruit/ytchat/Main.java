@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-package com.google.youtube.gaming.chat;
+package net.teamfruit.ytchat;
 
 import com.google.api.services.youtube.YouTubeScopes;
+import net.teamfruit.ytchat.service.Auth;
 
 import java.io.BufferedReader;
 import java.io.IOException;

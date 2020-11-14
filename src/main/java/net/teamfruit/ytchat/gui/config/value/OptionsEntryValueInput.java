@@ -1,4 +1,4 @@
-package com.google.youtube.gaming.chat.gui.config.value;
+package net.teamfruit.ytchat.gui.config.value;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.IGuiEventListener;

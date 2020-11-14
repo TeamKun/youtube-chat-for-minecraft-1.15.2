@@ -1,4 +1,4 @@
-package com.google.youtube.gaming.chat.gui.config;
+package net.teamfruit.ytchat.gui.config;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.widget.button.Button;

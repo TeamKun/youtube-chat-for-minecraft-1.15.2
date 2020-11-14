@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
-package com.google.youtube.gaming.chat;
+package net.teamfruit.ytchat;
 
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Util;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 /**
@@ -33,15 +35,14 @@ public class YouTubeConfiguration {
         public Secret(final ForgeConfigSpec.Builder builder) {
             builder
                     .comment("The client secrets from Google API console")
-                    .translation("ytchat.config.render")
                     .push("Secret");
             this.clientSecret = builder
                     .comment("The client secret from Google API console")
-                    .translation("ytchat.config.secret.clientsecret")
+                    .translation(Util.makeTranslationKey("config", new ResourceLocation(YouTubeChat.MODID, "secret.client_secret")))
                     .define("Client Secret", "");
             this.videoId = builder
                     .comment("The id of the live video")
-                    .translation("ytchat.config.secret.videoid")
+                    .translation(Util.makeTranslationKey("config", new ResourceLocation(YouTubeChat.MODID, "secret.video_id")))
                     .define("Video ID", "");
             builder.pop();
         }
